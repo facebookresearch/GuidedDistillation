@@ -18,7 +18,7 @@ from detectron2.engine import default_argument_parser, launch
 def parse_args():
     d2_arg_parser = default_argument_parser()
     parser = argparse.ArgumentParser(
-        "Submitit for D2-based DETR", parents=[d2_arg_parser], add_help=False
+        "Submitit launcher for D2-based Guided Distillation", parents=[d2_arg_parser], add_help=False
     )
 
     parser.add_argument(
@@ -50,8 +50,7 @@ def parse_args():
 def get_shared_folder() -> Path:
     user = os.getenv("USER")
     if Path("/checkpoint/").is_dir():
-        # p = Path(f"/private/home/tariqberrada/Projects/mask2former/detectron2/projects/Mask2Former/training-runs/")
-        p = Path(f"/checkpoint/tariqberrada/gd_evals/")
+        p = Path(os.path.join(os.getcwd(), "logs"))
         p.mkdir(exist_ok=True)
         return p
     raise RuntimeError("No shared folder available")
