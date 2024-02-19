@@ -66,7 +66,7 @@ Example with DINOv2 backbones, 0.4\% of labeled data (for percentage below 1\%, 
 
 * Train semi-supervised model using pretrained checkpoint
     ```
-    python3 -W ignore train_net.py --config-file ./configs/cityscapes/instance-segmentation/maskformer2_R50_bs16_90k.yaml --num-gpus 2 --num-machines 1 SSL.PERCENTAGE 5 SSL.TRAIN_SSL True SSL.TEACHER_CKPT *PATH/TO/CKPT* OUTPUT_DIR *OUTPUT/DIR/STUDENT* SSL.BURNIN_ITER *NB_ITER*
+    python3 -W ignore train_net.py --config-file ./configs/coco/instance-segmentation/dinov2/maskformer2_dinov2_large_bs16_50ep.yaml --num-gpus 2 --num-machines 1 SSL.PERCENTAGE 250 SSL.TRAIN_SSL True SSL.TEACHER_CKPT *PATH/TO/CKPT* OUTPUT_DIR *OUTPUT/DIR/STUDENT* SSL.BURNIN_ITER *NB_ITER*
     ```
 
 You can choose to evaluate either the teacher, the student or both models during semi-supervised training. 
