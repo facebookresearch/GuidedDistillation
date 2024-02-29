@@ -204,6 +204,8 @@ class Trainer(DefaultTrainer):
             cfg.defrost()
             cfg_gan = cfg.clone()
             cfg_gan.DATASETS.TRAIN = ("coco_2017_unlabel_train",)
+            if cfg.SSL.TRAIN_SSL:
+                cfg_gan.DATALOADER.SAMPLER_TRAIN = "TrainingSampler"
             cfg_gan.freeze()
             cfg.freeze()
             mapper_unl = ImageDatasetMapper(cfg_gan, True)
